@@ -5,8 +5,9 @@ const cors = require('cors');
 
 const app = express();
 const server = http.createServer(app);
+const allowedOrigins = ['http://localhost:4200','http://localhost'];
 const io = socketIo(server, {cors: {
-    origin: 'http://localhost:4200', // Allow Angular app on localhost:4200
+    origin: allowedOrigins,
     methods: ['GET', 'POST'],
     allowedHeaders: ['Content-Type'],
     credentials: true // Allow cookies if needed (optional)
@@ -17,7 +18,7 @@ const PORT = process.env.PORT || 3000;
 // app.use(express.static('public')); // Serve static files from the 'public' folder
 
 app.use(cors({
-    origin: '*', // Allow only the Angular app's origin
+    origin: allowedOrigins,
     methods: ['GET', 'POST'], // Allowed HTTP methods
     allowedHeaders: '*', // Allowed headers
   }));
