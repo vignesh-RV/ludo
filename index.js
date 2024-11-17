@@ -5,7 +5,7 @@ const cors = require('cors');
 
 const app = express();
 const server = http.createServer(app);
-const allowedOrigins = ['http://localhost:4200','http://localhost'];
+const allowedOrigins = ['http://localhost:4200','https://localhost'];
 const io = socketIo(server, {cors: {
     origin: allowedOrigins,
     methods: ['GET', 'POST'],
